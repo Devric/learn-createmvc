@@ -17,8 +17,28 @@ foreach ($parsed as $argument) {
     $getVars[$variable] = $value;
 }
 
-// this is a test, and we will be removing it later
-print "the page your requested is '$page'";
-print '<br />';
-$vars = print_r($getVars, TRUE);
-print "The following get var were passed to the page: <pre>" . $vars . "</pre>";
+// compute the path
+$target = SERVER_ROOT . '/controllers/' . $page . '.php';
+
+// get target
+if (file_exists($target)) { 
+    include_once($target);
+
+    // modify page to fit naming convention
+    $class = ucfirst($page). '_Controller';
+
+    // instantiate the appropriate class
+    if (class_exists($class)) {
+        $controller = new $class;
+    } else {
+        // did we name our class correctly?
+        die('class does not exists!');
+    }
+} else { 
+    // cant find file in controllers
+    die('page does not exists!');
+}
+
+// execute the default() once controller is instantiate
+// pass any Get var to main method
+$controller->main($getVars);
