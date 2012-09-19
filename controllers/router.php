@@ -42,3 +42,21 @@ if (file_exists($target)) {
 // execute the default() once controller is instantiate
 // pass any Get var to main method
 $controller->main($getVars);
+
+function __autoload($className)
+{ 
+    // parse out fileame where class should be located
+    list($filename, $suffix) = preg_split('%_%', $className);
+
+    // compose file name
+    $file = SERVER_ROOT . '/models/' . strtolower($filename) . '.php';
+
+    // fetch file 
+    if ( file_exists($file) ) {
+        // get file
+        include_once($file);
+    } else {
+        // file does not exists
+        die('File not exists');
+    }
+}
