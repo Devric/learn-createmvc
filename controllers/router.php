@@ -13,7 +13,7 @@ $page = array_shift($parsed);
 $getVars = array();
 foreach ($parsed as $argument) { 
     // split get vars along '='
-    list($variable, $value) = split('=', $argument);
+    list($variable, $value) = preg_split('%=%', $argument);
     $getVars[$variable] = $value;
 }
 

@@ -1,14 +1,15 @@
 <?
 
 /**
- *  handles the retrieval and serving news article 
- */
-
-/**
+ * News_Controller 
+ * handles the retrieval and serving news article 
  * 
+ * @package 
+ * @version $id$
+ * @copyright 2007-2011 FunkyMunky Inc
+ * @author Devric <devric.co.cc> 
+ * @license PHP Version 5.0 {@link http://www.php.net/license/3_0.txt}
  */
-
-
 class News_Controller
 {
     /**
@@ -19,9 +20,6 @@ class News_Controller
 
     public function main( array $getVars)
     { 
-        print 'we are in news!';
-        print '<br />';
-        $vars = print_r($getVars, TRUE);
-        print ( "the following GET vars were passed to this controller:" . '<pre>' . $vars . "</pre>" );
+        $newsModel = new News_Model;
     }
 }
