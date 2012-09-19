@@ -21,5 +21,10 @@ class News_Controller
     public function main( array $getVars)
     { 
         $newsModel = new News_Model;
+
+        // get article
+        $article = $newsModel->get_article('test');
+
+        print_r($article);
     }
 }
