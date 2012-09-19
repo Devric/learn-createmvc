@@ -16,18 +16,15 @@ class News_Controller
      *  Template var will hold the view 
      */
     
-    public $template = 'news';
-
     public function main( array $getVars)
     { 
-
         $newsModel = new News_Model;
 
         // get article from model
         $article = $newsModel->get_article( $getVars['article'] );
 
         // create new view and use a template
-        $view = new View_Model($this->template);
+        $view = new View_Model( $getVars['page'] );
 
         $view->assign('title', $article['title']);
         $view->assign('content', $article['content']);

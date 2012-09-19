@@ -17,6 +17,9 @@ foreach ($parsed as $argument) {
     $getVars[$variable] = $value;
 }
 
+// push $page into var
+$getVars[page] = $page;
+
 // compute the path
 $target = SERVER_ROOT . '/controllers/' . $page . '.php';
 
