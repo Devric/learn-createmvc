@@ -20,10 +20,11 @@ class News_Controller
 
     public function main( array $getVars)
     { 
+
         $newsModel = new News_Model;
 
-        // get article
-        $article = $newsModel->get_article('test');
+        // get article from model
+        $article = $newsModel->get_article( $getVars['article'] );
 
         // create new view and use a template
         $view = new View_Model($this->template);
