@@ -25,6 +25,10 @@ class News_Controller
         // get article
         $article = $newsModel->get_article('test');
 
-        print_r($article);
+        // create new view and use a template
+        $view = new View_Model($this->template);
+
+        $view->assign('title', $article['title']);
+        $view->assign('content', $article['content']);
     }
 }

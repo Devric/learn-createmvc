@@ -43,6 +43,14 @@ if (file_exists($target)) {
 // pass any Get var to main method
 $controller->main($getVars);
 
+
+/**
+ * __autoload 
+ * 
+ * @param mixed $className 
+ * @access protected
+ * @return void
+ */
 function __autoload($className)
 { 
     // parse out fileame where class should be located
